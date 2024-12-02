@@ -1,4 +1,5 @@
 from tkinter import Tk, BOTH, Canvas
+from shapes import Line, Point
 
 
 class Window:
@@ -40,3 +41,6 @@ class Window:
     # set the running state to False, add another line to constructor to call protocol method on the widge to connect cose
     def close(self):
         self.__running = False
+
+    def draw_line(self, line, fill_color):
+        line.draw(self.__canvas, fill_color)
