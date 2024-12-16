@@ -1,29 +1,34 @@
+import tkinter as tk
 from window import Window
 from shapes import Point, Line
+from cell import Cell
 
 
 def main():
-    # define a window size
-    width = 800
-    height = 600
-    # create a window instance
-    window = Window(width, height)
+    # Set up Tkinter window and canvas
+    root = tk.Tk()
+    canvas = tk.Canvas(root, width=400, height=400, bg='white')
+    canvas.pack()
 
-    # define points
-    point1 = Point(50, 50)
-    point2 = Point(200, 200)
-    point3 = Point(300, 100)
-    point4 = Point(100, 300)
+    # Create a few Cell instances at different coordinates for testing
+    cells = [
+        Cell(50, 50, 150, 150, True, False, True, True),
+        Cell(150, 150, 250, 250, False, True, True, False),
+        Cell(250, 50, 350, 150, False, True, False, True)
+    ]
 
-    # Create lines using the points
-    line1 = Line(point1, point2)
-    line2 = Line(point3, point4)
+    # Modify cells to simulate different wall configurations
+    # cells[0].has_right_wall = False
+    # cells[1].has_left_wall = False
+    # cells[1].has_bottom_wall = False
+    # cells[2].has_left_wall = False
 
-    # Draw lines on the window
-    window.draw_line(line1, "red")
-    window.draw_line(line2, "blue")
+    # Draw each cell on the canvas
+    for cell in cells:
+        cell.draw(canvas)
 
-    window.wait_for_close()
+    # Start the Tkinter event loop
+    root.mainloop()
 
 
 if __name__ == "__main__":

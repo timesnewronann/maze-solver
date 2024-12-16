@@ -1,4 +1,3 @@
-
 class Point:
     # simply store 2 public data members
     def __init__(self, x, y):
@@ -11,8 +10,8 @@ class Line:
         self.point1 = point1
         self.point2 = point2
 
-    def draw(self, canvas, fill_color):
-        # use the coordinates from the point objects to drwa the line on the canvas
+    def draw(self, canvas, fill_color = 'black'):
+        # use the coordinates from the point objects to draw the line on the canvas
         x1, y1 = self.point1.x, self.point1.y
         x2, y2 = self.point2.x, self.point2.y
 
