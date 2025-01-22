@@ -7,7 +7,7 @@ class Cell:
         self._x1, self._y1 = x1, y1
         self._x2, self._y2 = x2, y2
 
-    # Cell class needs to be able to draw itself to its canvas
+    # Cell class needs to be able to draw itself to its canvas 
     # Take x/y coordinates of it's top left corner and bottom right corner as input
     # If the cell has a left wall, draw it
     # If the cell has a top wall draw it

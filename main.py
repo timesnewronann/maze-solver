@@ -1,7 +1,6 @@
 import tkinter as tk
-from window import Window
-from shapes import Point, Line
 from cell import Cell
+from maze import Maze
 
 
 def main():
@@ -17,15 +16,21 @@ def main():
         Cell(250, 50, 350, 150, False, True, False, True)
     ]
 
-    # Modify cells to simulate different wall configurations
-    # cells[0].has_right_wall = False
-    # cells[1].has_left_wall = False
-    # cells[1].has_bottom_wall = False
-    # cells[2].has_left_wall = False
-
     # Draw each cell on the canvas
     for cell in cells:
         cell.draw(canvas)
+
+    # Create a Maze instance: Adjust parameters as necessary for your logic.
+    # The necessity of Window object depends on its role.
+    maze = Maze(
+        x1=0, y1=0,
+        num_rows=10,
+        num_cols=10,
+        cell_size_x=40,
+        cell_size_y=40,
+        win=None  # Placeholder if Window is not yet interacting
+    )
+    maze._create_cells()  # Initiate maze logic with drawing
 
     # Start the Tkinter event loop
     root.mainloop()

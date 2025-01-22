@@ -1,4 +1,5 @@
 from cell import Cell
+import time
 
 
 class Maze:
@@ -13,7 +14,7 @@ class Maze:
         self.win = win
 
         # call _create_cells() method
-        self._create_cells(self)
+        self._create_cells()
 
     # Fill a self._cells list with lists of cells. Each top-level list is a column of Cell objects
     def _create_cells(self):
@@ -34,8 +35,22 @@ class Maze:
                 column.append(cell)
             self._cells.append(column)
 
+    # Determine where to draw each Cell in relation to the Maze's position and cell size -> invoke the cell's drawing method
     def _draw_cell(self, i, j):
-        pass
+        # 1. Calculate the cell's position
+        # Use the i and j values -> calculate the cell's x and y positions with respect to the maze's starting position and cell size
+        x_position = self.x1 + i * self.cell_size_x
+        y_position = self.y1 + j * self.cell_size_y
+        # 2. Call the cell's draw method:
+        # Each cell might have its own draw() method to render itself using those coordinates
+        self._cells[i][j].draw(x_position, y_position)
+        # 3. Animation
+        # After drawing a cell, invoke the maze's _animate() method to update the visual display
+        self._animate()
 
     def _animate(self):
-        pass
+        # 1. Redraw the window
+        self.win.redraw()
+
+        # Puase so the animation can be seen
+        time.sleep(0.05)
